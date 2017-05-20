@@ -2,7 +2,9 @@
 
 <p>
   <strong>Number:</strong>
-  <%= @train.number %>
+  <%= @train.number %><br>
+  <strong>Route:</strong>
+  <%= @train.route&.name || 'Route not assigned' %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
