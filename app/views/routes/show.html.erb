@@ -3,6 +3,13 @@
 <p>
   <strong>Name:</strong>
   <%= @route.name %>
+  <br>
+  <strong>List trains:</strong>
+  <ul>
+    <% @route.trains.each do |train| %>
+      <li><%= train.number %></li>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
