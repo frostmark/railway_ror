@@ -18,12 +18,10 @@ class TrainsController < ApplicationController
   def create
     @train = Train.new(train_params)
 
-    respond_to do |format|
-      if @train.save
-        redirect_to @train, notice: 'Train was successfully created.'
-      else
-        render :new
-      end
+    if @train.save
+      redirect_to @train, notice: 'Train was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -37,16 +35,15 @@ class TrainsController < ApplicationController
 
   def destroy
     @train.destroy
-      redirect_to trains_url, notice: 'Train was successfully destroyed.'
-    end
+    redirect_to trains_url, notice: 'Train was successfully destroyed.'
   end
 
   private
-    def set_train
-      @train = Train.find(params[:id])
-    end
+  def set_train
+    @train = Train.find(params[:id])
+  end
 
-    def train_params
-      params.require(:train).permit(:number)
-    end
+  def train_params
+    params.require(:train).permit(:number)
+  end
 end
