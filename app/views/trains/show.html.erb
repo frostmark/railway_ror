@@ -5,6 +5,24 @@
   <%= @train.number %><br>
   <strong>Route:</strong>
   <%= @train.route&.name || 'Route not assigned' %>
+  <br>
+
+  <strong>Coupe carriages quantity:</strong>
+  <%= @carriages.where(kind: :coupe).count %>
+  <br>
+
+  <strong>Seat carriages quantity:</strong>
+  <%= @carriages.where(kind: :seat).count %>
+  <br>
+
+  <strong>Carriages:</strong>
+  <br>
+  <% @carriages.each do |carriage| %>
+    Kind: <%= carriage.kind %>
+    Top seats: <%= carriage.top_seats %>
+    Low seats: <%= carriage.low_seats %>
+    <br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |

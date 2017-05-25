@@ -6,6 +6,7 @@ class TrainsController < ApplicationController
   end
 
   def show
+    @carriages = @train.carriages
   end
 
   def new
