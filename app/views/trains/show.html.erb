@@ -8,21 +8,22 @@
   <br>
 
   <strong>Coupe carriages quantity:</strong>
-  <%= @carriages.where(kind: :coupe).count %>
+  <%= @carriages.count_by_kind(:coupe) %>
   <br>
 
   <strong>Seat carriages quantity:</strong>
-  <%= @carriages.where(kind: :seat).count %>
+  <%= @carriages.count_by_kind(:seat) %>
   <br>
 
-  <strong>Carriages:</strong>
+  <strong>Seats:</strong>
   <br>
-  <% @carriages.each do |carriage| %>
-    Kind: <%= carriage.kind %>
-    Top seats: <%= carriage.top_seats %>
-    Low seats: <%= carriage.low_seats %>
-    <br>
-  <% end %>
+  Coupe, top_seats:<%= @carriages.count_seats_by_kind(:coupe, :top_seats) %>
+  <br>
+  Coupe, low_seats: <%= @carriages.count_seats_by_kind(:coupe, :low_seats) %>
+  <br>
+  Seat, top_seats: <%= @carriages.count_seats_by_kind(:seat, :top_seats) %>
+  <br>
+  Seat, low_seats: <%= @carriages.count_seats_by_kind(:seat, :low_seats) %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
