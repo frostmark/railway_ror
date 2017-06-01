@@ -1,0 +1,3 @@
+class EconomCarriage < Carriage
+
+end

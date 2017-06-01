@@ -7,23 +7,18 @@
   <%= @train.route&.name || 'Route not assigned' %>
   <br>
 
-  <strong>Coupe carriages quantity:</strong>
-  <%= @carriages.count_by_kind(:coupe) %>
-  <br>
-
-  <strong>Seat carriages quantity:</strong>
-  <%= @carriages.count_by_kind(:seat) %>
-  <br>
-
-  <strong>Seats:</strong>
-  <br>
-  Coupe, top_seats:<%= @carriages.count_seats_by_kind(:coupe, :top_seats) %>
-  <br>
-  Coupe, low_seats: <%= @carriages.count_seats_by_kind(:coupe, :low_seats) %>
-  <br>
-  Seat, top_seats: <%= @carriages.count_seats_by_kind(:seat, :top_seats) %>
-  <br>
-  Seat, low_seats: <%= @carriages.count_seats_by_kind(:seat, :low_seats) %>
+  <strong>Carriages:</strong>
+  <% if @train.carriages.empty? %>
+    None
+  <% else %>
+    <ul>
+      <% @train.carriages.each do |carriage| %>
+        <li>
+          <%= link_to "Number: #{carriage.number}", carriage_path(carriage) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
