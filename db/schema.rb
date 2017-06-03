@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170601182313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "route_id"
-    t.boolean "from_head", default: false
+    t.boolean "from_head", default: false, null: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end

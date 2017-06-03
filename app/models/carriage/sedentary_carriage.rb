@@ -1,5 +1,5 @@
 class SedentaryCarriage < Carriage
-  def self.model_name
-    Carriage.model_name
-  end
+  self.seats = [:sedentary_seats].freeze
+
+  validates :sedentary_seats, inclusion: 0..50
 end

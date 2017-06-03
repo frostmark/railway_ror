@@ -6,23 +6,14 @@ class Carriage < ApplicationRecord
     'SleepingCarriage'
   ].freeze
 
-  SEATS_TYPES = {
-    coupe_carriage: [:top_seats, :low_seats],
-    econom_carriage: [:top_seats, :low_seats, :side_top_seats, :side_low_seats],
-    sleeping_carriage: [:low_seats],
-    sedentary_carriage: [:sedentary_seats]
-  }.freeze
+  class_attribute :seats
+  self.seats = [].freeze
 
   belongs_to :train
 
   validates :number, uniqueness: { scope: :train_id }
-  validates :top_seats, :low_seats, :side_top_seats, :side_low_seats, :sedentary_seats, inclusion: 0..50
 
   before_validation :set_number
-
-  def seats
-    SEATS_TYPES[self.class.name.underscore.to_sym]
-  end
 
   def self.allowed_types
     ALLOWED_TYPES
@@ -31,7 +22,7 @@ class Carriage < ApplicationRecord
   protected
 
   def set_number
-    self.number = max_number + 1
+    self.number ||= max_number + 1
   end
 
   def max_number

@@ -2,14 +2,14 @@ class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
-    @carriages = carriage_type.all
+    @carriages = Carriage.all
   end
 
   def show
   end
 
   def new
-    @carriage = carriage_type.new
+    @carriage = Carriage.new
   end
 
   def edit
@@ -58,14 +58,5 @@ class CarriagesController < ApplicationController
 
   def carriage_types
     Carriage.descendants
-  end
-
-  def carriage_type
-    if params[:carriage].present? && params[:carriage][:type].present?
-      typed_model = params[:carriage][:type].constantize
-      return typed_model if typed_model.in? carriage_types
-    end
-
-    Carriage
   end
 end
