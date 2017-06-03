@@ -4,14 +4,21 @@
   <strong>Train:</strong>
   <%= @carriage.train&.number || 'Train not assigned' %>
   <br>
-  <strong>Top seats:</strong>
-  <%= @carriage.top_seats %>
+  <strong>Type:</strong>
+  <%= @carriage.type.titleize %>
   <br>
-  <strong>Low seats:</strong>
-  <%= @carriage.low_seats %>
+  <strong>Number:</strong>
+  <%= @carriage.number %>
   <br>
-  <strong>Kind:</strong>
-  <%= @carriage.kind %>
+  <strong>Seats: </strong>
+  <ul>
+    <% @carriage.seats.each do |seat| %>
+      <li>
+        <%= "#{seat.to_s.titleize} #{@carriage.send(seat)} "  %>
+      </li>
+    <% end %>
+  </ul>
+
 </p>
 
 <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
