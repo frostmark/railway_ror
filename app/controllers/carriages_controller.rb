@@ -55,8 +55,4 @@ class CarriagesController < ApplicationController
       :sedentary_seats
     )
   end
-
-  def carriage_types
-    Carriage.descendants
-  end
 end
