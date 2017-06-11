@@ -6,6 +6,23 @@ class Route < ApplicationRecord
 
   has_many :trains
 
+  scope :with_station, ->(id) { includes(:routes_stations).where(routes_stations: { station_id: id }) }
+
+  def self.by_stations(start_st, end_st)
+    with_start_station = with_station(start_st)
+    with_end_station = with_station(end_st)
+    routes = with_start_station.merge(with_end_station)
+
+    routes.select do |r|
+      start_station_number = r.routes_stations.find_by(station_id: start_st).try(:position)
+      end_station_number = r.routes_stations.find_by(station_id: end_st).try(:position)
+
+      if [start_station_number, end_station_number].all?
+        start_station_number.to_i < end_station_number.to_i
+      end
+    end
+  end
+
   private
 
   def set_name

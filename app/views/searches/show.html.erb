@@ -1,0 +1,20 @@
+<%= form_for :search, url: search_path, method: :get do |form| %>
+  <div class="field">
+    <%= form.label :from %>
+    <%= form.collection_select :from, @stations, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to %>
+    <%= form.collection_select :to, @stations, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<strong>Allowed routes: </strong><br>
+<% if @routes %>
+  <%= render partial: 'routes_list', collection: @routes, as: :route %>
+<% end %>
