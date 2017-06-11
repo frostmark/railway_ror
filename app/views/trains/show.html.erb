@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <strong>Number:</strong>
   <%= @train.number %><br>
+</div>
+<div>
   <strong>Route:</strong>
   <%= @train.route&.name || 'Route not assigned' %>
-  <br>
+</div>
 
+
+<div>
   <strong>Carriages:</strong>
   <% if @train.carriages.empty? %>
     None
@@ -19,7 +23,9 @@
       <% end %>
     </ul>
   <% end %>
-</p>
+</div>
+
+<%= link_to 'Add carriage', new_train_carriage_path(@train) %>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
