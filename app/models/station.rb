@@ -24,18 +24,12 @@ class Station < ApplicationRecord
   end
 
   def update_time(route, params)
-    atime = hour_and_minutes(params[:station], 'arrive_time')
-    dtime = hour_and_minutes(params[:station], 'departure_time')
-    station_route(route)&.update(arrive_time: atime, departure_time: dtime)
+    station_route(route)&.update(arrive_time: params[:arrive_time], departure_time: params[:departure_time])
   end
 
   protected
 
   def station_route(route)
     @station_route ||= routes_stations.where(route: route).first
-  end
-
-  def hour_and_minutes(params, name)
-    params.select { |key| key.include? name }.values.slice(3..4).join(':')
   end
 end

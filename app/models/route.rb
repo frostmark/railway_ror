@@ -17,7 +17,7 @@ class Route < ApplicationRecord
       start_station_number = r.routes_stations.find_by(station_id: start_st).try(:position)
       end_station_number = r.routes_stations.find_by(station_id: end_st).try(:position)
 
-      if [start_station_number, end_station_number].all?
+      if start_station_number && end_station_number
         start_station_number.to_i < end_station_number.to_i
       end
     end

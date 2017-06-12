@@ -13,9 +13,10 @@ class CarriagesController < ApplicationController
 
   def create
     @carriage = Carriage.new(carriage_params)
+    @carriage.train = @train
 
     if @carriage.save
-      redirect_to train_path(params[:train_id]), notice: 'Carriage was successfully created.'
+      redirect_to train_path(@train.id), notice: 'Carriage was successfully created.'
     else
       render :new
     end
@@ -46,7 +47,6 @@ class CarriagesController < ApplicationController
 
   def carriage_params
     params.require(:carriage).permit(
-      :train_id,
       :type,
       :top_seats,
       :low_seats,

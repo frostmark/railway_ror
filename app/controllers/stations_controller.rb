@@ -1,5 +1,6 @@
 class StationsController < ApplicationController
   before_action :set_station, except: [:index ,:new, :create]
+  before_action :set_route, only: [:update_position, :update_time]
 
   def index
     @stations = Station.all
@@ -34,9 +35,14 @@ class StationsController < ApplicationController
   end
 
   def update_position
-    @route = Route.find(params[:route_id])
     @station.update_position(@route, params[:position])
-    
+
+    redirect_to @route
+  end
+
+  def update_time
+    @station.update_time(@route, params)
+
     redirect_to @route
   end
 
@@ -49,6 +55,10 @@ class StationsController < ApplicationController
 
   def set_station
     @station = Station.find(params[:id])
+  end
+
+  def set_route
+    @route = Route.find(params[:route_id])
   end
 
   def station_params

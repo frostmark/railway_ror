@@ -32,7 +32,8 @@ class TicketsController < ApplicationController
     @end_station ||= params.dig(:ticket, :end_station_id)
     @route ||= params.dig(:ticket, :route_id)
     @user ||= current_user
-    redirect_to :search unless [@start_station, @end_station, @route].all?
+
+    redirect_to :search unless [@start_station, @end_station, @route].all?(&:present?)
   end
 
   def ticket_params
