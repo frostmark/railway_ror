@@ -12,8 +12,7 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    @carriage = Carriage.new(carriage_params)
-    @carriage.train = @train
+    @carriage = @train.carriages.new(carriage_params)
 
     if @carriage.save
       redirect_to train_path(@train.id), notice: 'Carriage was successfully created.'

@@ -11,7 +11,7 @@ class Route < ApplicationRecord
   def self.by_stations(start_st, end_st)
     with_start_station = with_station(start_st)
     with_end_station = with_station(end_st)
-    routes = with_start_station.merge(with_end_station)
+    routes = with_start_station & with_end_station
 
     routes.select do |r|
       start_station_number = r.routes_stations.find_by(station_id: start_st).try(:position)
