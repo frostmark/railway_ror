@@ -1,0 +1,19 @@
+<%= form_for([@train, @ticket]) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :passport %>
+    <%= form.text_field :passport %>
+  </div>
+  <div class="field">
+    <%= form.hidden_field :start_station_id, value: @start_station %>
+    <%= form.hidden_field :end_station_id, value: @end_station %>
+    <%= form.hidden_field :route_id, value: @route %>
+    <%= form.hidden_field :user_id, value: @user.id %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

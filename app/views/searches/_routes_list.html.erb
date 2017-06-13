@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td>
+      <%= route.name %>
+    </td>
+    <td>
+      <%= route.stations.first.departure_time_in(route.id) %>
+    </td>
+    <td>
+      <%= route.stations.last.arrive_time_in(route.id) %>
+    </td>
+    <% if route.trains.present? %>
+      <td>
+        <table>
+          <% route.trains.each do |train| %>
+            <tr>
+              <td>
+                <%= link_to train.number, train %>
+              </td>
+              <td>
+                <%= form_for :ticket, url: new_train_ticket_path(train), method: :get do |form| %>
+                  <%= form.hidden_field :start_station_id, value: @start_station %>
+                  <%= form.hidden_field :end_station_id, value: @end_station %>
+                  <%= form.hidden_field :route_id, value: route.id %>
+                  <%= form.submit 'Buy ticket' %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+    <% end %>
+  </tr>
+</table>
