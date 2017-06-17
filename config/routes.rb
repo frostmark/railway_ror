@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: "home#index"
+
   resources :trains do
     resources :carriages, shallow: true, except: [:index]
     resources :tickets, shallow: true, only: [:new, :show, :create, :delete]
