@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "searches#show"
 
   namespace :admin do
+    root 'base#index'
+    
     resources :trains do
       resources :carriages, shallow: true
     end

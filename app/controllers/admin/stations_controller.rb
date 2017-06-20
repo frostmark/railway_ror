@@ -1,4 +1,4 @@
-class StationsController < ApplicationController
+class Admin::StationsController < Admin::BaseController
   before_action :set_station, except: [:index ,:new, :create]
   before_action :set_route, only: [:update_position, :update_time]
 
