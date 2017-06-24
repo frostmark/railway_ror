@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to 'Show', ticket %></td>
+  <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
   <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Destroy', admin_ticket_path(ticket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

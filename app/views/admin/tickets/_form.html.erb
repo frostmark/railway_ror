@@ -1,0 +1,38 @@
+<%= form_for([:admin, @train, @ticket]) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :passport %>
+    <%= form.text_field :passport %>
+  </div>
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.collection_select :user_id, User.all, :id, :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_station_id %>
+    <%= form.collection_select :start_station_id, Station.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_station_id %>
+    <%= form.collection_select :end_station_id, Station.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route_id %>
+    <%= form.collection_select :route_id, Route.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train_id %>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
