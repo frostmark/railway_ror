@@ -1,4 +1,4 @@
-<%= form_for([@train, @carriage.becomes(Carriage)]) do |form| %>
+<%= form_for([:admin, @train, @carriage.becomes(Carriage)]) do |form| %>
   <%= render 'common/errors', resource: @carriage %>
   <div class="types-inputs">
     <div class="field">

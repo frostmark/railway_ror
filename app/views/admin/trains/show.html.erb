@@ -18,14 +18,14 @@
     <ul>
       <% @train.carriages.each do |carriage| %>
         <li>
-          <%= link_to "Number: #{carriage.number}", carriage_path(carriage) %>
+          <%= link_to "Number: #{carriage.number}", admin_carriage_path(carriage) %>
         </li>
       <% end %>
     </ul>
   <% end %>
 </div>
 
-<%= link_to 'Add carriage', new_train_carriage_path(@train) %>
+<%= link_to 'Add carriage', new_admin_train_carriage_path(@train) %>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>
