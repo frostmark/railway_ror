@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_train, only: [:new, :create]
 
   def new
@@ -8,6 +9,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = @train.tickets.new(ticket_params)
+    @ticket.user = current_user
 
     if @ticket.save
       redirect_to @ticket
@@ -31,7 +33,6 @@ class TicketsController < ApplicationController
     @start_station ||= params.dig(:ticket, :start_station_id)
     @end_station ||= params.dig(:ticket, :end_station_id)
     @route ||= params.dig(:ticket, :route_id)
-    @user ||= current_user
 
     redirect_to :search unless [@start_station, @end_station, @route].all?(&:present?)
   end
