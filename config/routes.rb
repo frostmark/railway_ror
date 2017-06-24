@@ -1,12 +1,32 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root to: "searches#show"
+
+  namespace :admin do
+    root 'base#index'
+
+    resources :trains do
+      resources :carriages, shallow: true
+    end
+
+    resources :tickets
+
+    resources :routes
+
+    resources :stations do
+      patch :update_position, on: :member
+      patch :update_time, on: :member
+    end
+
+    resources :users
+  end
+
   resources :trains do
-    resources :carriages, shallow: true, except: [:index]
-    resources :tickets, shallow: true, only: [:new, :show, :create, :delete]
+    resources :tickets, shallow: true, only: [:new, :create]
   end
-  resources :stations do
-    patch :update_position, on: :member
-    patch :update_time, on: :member
-  end
-  resources :routes
+
+  resources :tickets, only: [:index, :show, :destroy]
+
   resource :search, only: [:show]
 end

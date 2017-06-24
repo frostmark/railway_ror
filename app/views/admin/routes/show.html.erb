@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <strong>Name:</strong>
+  <%= @route.name %>
+</div>
+
+<div>
+  <strong>List trains:</strong>
+  <% if @route.trains.any? %>
+    <ul>
+      <% @route.trains.each do |train| %>
+        <li><%= train.number %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no trains on the route</p>
+  <% end %>
+</div>
+
+<div>
+  <strong>Stations</strong>
+  <% if @route.stations.any? %>
+    <table>
+      <thead>
+        <tr>
+          <td width="100px">Name</td>
+          <td>Position</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @route.stations.each do |station| %>
+          <tr>
+            <td><%= station.name %></td>
+            <td>
+              <%= form_tag update_position_station_path(station), method: :patch do %>
+                <%= number_field_tag :position, station.position_in(@route) %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <%= submit_tag "Change" %>
+              <% end %>
+            </td>
+            <td>
+              <%= form_tag update_time_station_path(station), method: :patch do %>
+                <%= date_field_tag :arrive_time, station.arrive_time_in(@route) %>
+                <%= date_field_tag :departure_time, station.departure_time_in(@route) %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <%= submit_tag "Update time" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No have stations</p>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>

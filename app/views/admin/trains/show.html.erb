@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <strong>Number:</strong>
+  <%= @train.number %><br>
+</div>
+<div>
+  <strong>Route:</strong>
+  <%= @train.route&.name || 'Route not assigned' %>
+</div>
+
+
+<div>
+  <strong>Carriages:</strong>
+  <% if @train.carriages.empty? %>
+    None
+  <% else %>
+    <ul>
+      <% @train.carriages.each do |carriage| %>
+        <li>
+          <%= link_to "Number: #{carriage.number}", admin_carriage_path(carriage) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<%= link_to 'Add carriage', new_admin_train_carriage_path(@train) %>
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>
