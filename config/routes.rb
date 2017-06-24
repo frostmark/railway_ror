@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'base#index'
-    
+
     resources :trains do
       resources :carriages, shallow: true
     end
@@ -23,8 +23,10 @@ Rails.application.routes.draw do
   end
 
   resources :trains do
-    resources :tickets, shallow: true, only: [:new, :show, :create, :delete]
+    resources :tickets, shallow: true, only: [:new, :create]
   end
+
+  resources :tickets, only: [:index, :show, :destroy]
 
   resource :search, only: [:show]
 end

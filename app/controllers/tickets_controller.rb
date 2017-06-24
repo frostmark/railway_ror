@@ -2,6 +2,10 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_train, only: [:new, :create]
 
+  def index
+    @tickets = Ticket.assigned_to(current_user)
+  end
+
   def new
     set_params_or_redirect
     @ticket = Ticket.new
@@ -17,6 +21,12 @@ class TicketsController < ApplicationController
       set_params_or_redirect
       render :new
     end
+  end
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy if @ticket.user == current_user
+    redirect_to tickets_path, notice: 'Ticket was successfully destroyed.'
   end
 
   def show
