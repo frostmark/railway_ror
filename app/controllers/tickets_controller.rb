@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_action :set_train, only: [:new, :create]
 
   def index
-    @tickets = Ticket.assigned_to(current_user)
+    @tickets = current_user.tickets
   end
 
   def new
