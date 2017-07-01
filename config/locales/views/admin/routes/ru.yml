@@ -1,0 +1,7 @@
+ru:
+  admin:
+    routes:
+      new:
+        name: Новый маршрут
+      edit:
+        name: Изменить маршрут

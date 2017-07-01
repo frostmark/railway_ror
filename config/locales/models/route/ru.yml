@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    models:
+      route: Маршрут
+    attributes:
+      route:
+        name: Название

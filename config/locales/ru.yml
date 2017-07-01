@@ -1,36 +1,8 @@
 ru:
-  common:
-    create: 'Создать'
-    update: 'Изменить'
-    destroy: 'Удалить'
-  admin:
-    routes:
-      new:
-        title: 'Новый маршрут'
-      edit:
-        title: 'Изменить маршрут'
-      form:
-        submit: '%{action} маршрут'
-        update_time: 'Обновить время'
-        update_number: 'Обновить номер'
-    trains:
-      new:
-        title: 'Новый поезд'
-      form:
-        submit: '%{action} поезд'
-        route_not_assigned: 'Маршрут не присвоен'
-    tickets:
-      edit:
-        title: 'Изменить билет'
-      form:
-        submit: '%{action} билет'
-  activerecord:
-   errors:
-     messages:
-       record_invalid: 'Возникли ошибки: %{errors}'
-       restrict_dependent_destroy:
-         has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
-         has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"
   errors:
     format: "%{attribute} %{message}"
     messages:
