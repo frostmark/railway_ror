@@ -1,0 +1,7 @@
+ru:
+  admin:
+    tickets:
+      new:
+        name: Новый билет
+      edit:
+        name: Редактировать билет

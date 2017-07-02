@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      ticket: Билет
+    attributes:
+      ticket:
+        name: ФИО
+        passport: Паспорт
+        route_id: Маршрут
+        start_station_id: Начальная станция
+        end_station_id: Конечная станция
+        train_id: Поезд
+        user: Пользователь

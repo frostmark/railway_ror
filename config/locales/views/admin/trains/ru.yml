@@ -1,0 +1,7 @@
+ru:
+  admin:
+    trains:
+      new:
+        name: Новый поезд
+      edit:
+        name: Редактировать поезд

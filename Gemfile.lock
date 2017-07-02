@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/doabit/semantic-ui-sass.git
+  revision: 48f03deab9131ad1583eda53c16b3eb83e11c178
+  specs:
+    semantic-ui-sass (2.2.10.1)
+      sass (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +81,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
+    i18n-debug (1.1.0)
+      i18n (< 1)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -197,6 +206,7 @@ DEPENDENCIES
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
   devise
+  i18n-debug
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
@@ -205,6 +215,7 @@ DEPENDENCIES
   rails (~> 5.1.0)
   sass-rails (~> 5.0)
   selenium-webdriver
+  semantic-ui-sass!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

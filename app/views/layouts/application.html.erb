@@ -9,16 +9,19 @@
   </head>
 
   <body>
-    <%= render 'header' %>
+    <div class="ui container">
+      <%= render 'header' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <footer>
-      <p>
-        (с) 2017 Марк Фрост.
-        <a href="http://www.thinknetica.com">Учебный проект в онлайн-школе Thinknetica</a>
-      </p>
-    </footer>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+      <footer>
+        <p>
+          (с) 2017 Марк Фрост.
+          <a href="http://www.thinknetica.com">Учебный проект в онлайн-школе Thinknetica</a>
+        </p>
+      </footer>
+    </div>
+
   </body>
 </html>
