@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619172238) do
+ActiveRecord::Schema.define(version: 20170708183040) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
     t.integer "top_seats", default: 0
     t.integer "low_seats", default: 0
-    t.integer "train_id"
+    t.bigint "train_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
@@ -23,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170619172238) do
     t.integer "side_low_seats", default: 0
     t.integer "sedentary_seats", default: 0
     t.integer "number"
+    t.index ["train_id", "type"], name: "index_carriages_on_train_id_and_type"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
@@ -39,8 +43,8 @@ ActiveRecord::Schema.define(version: 20170619172238) do
   end
 
   create_table "routes_stations", force: :cascade do |t|
-    t.integer "route_id"
-    t.integer "station_id"
+    t.bigint "route_id"
+    t.bigint "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
@@ -58,11 +62,11 @@ ActiveRecord::Schema.define(version: 20170619172238) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "train_id"
-    t.integer "user_id"
-    t.integer "start_station_id"
-    t.integer "end_station_id"
-    t.integer "route_id"
+    t.bigint "train_id"
+    t.bigint "user_id"
+    t.bigint "start_station_id"
+    t.bigint "end_station_id"
+    t.bigint "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -76,10 +80,10 @@ ActiveRecord::Schema.define(version: 20170619172238) do
 
   create_table "trains", force: :cascade do |t|
     t.string "number"
-    t.integer "current_station_id"
+    t.bigint "current_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
+    t.bigint "route_id"
     t.boolean "from_head", default: false, null: false
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
