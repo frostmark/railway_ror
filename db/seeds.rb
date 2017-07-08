@@ -10,7 +10,7 @@
 Station.create(name: 'Station1')
 Station.create(name: 'Station2')
 
-Route.stations << Route.first
+Route.last.stations << Route.first
 RouteStation.last.update(position: 0)
-Route.stations << Route.last
+Route.last.stations << Route.last
 RouteStation.last.update(position: 1)
