@@ -6,8 +6,13 @@ class Ticket < ApplicationRecord
   belongs_to :route
 
   after_create :buy_notify
+  after_destroy :remove_notify
 
   def buy_notify
     TicketMailer.ticket_buy_notify(user, self).deliver_now
+  end
+
+  def remove_notify
+    TicketMailer.ticket_remove_notify(user, self).deliver_now
   end
 end
