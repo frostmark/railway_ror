@@ -6,4 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: 'm.v.frost@yandex.ru', password: 'qwer1234', admin: true)
+
+Station.create(name: 'Station1')
+Station.create(name: 'Station2')
+
+Route.stations << Route.first
+RouteStation.last.update(position: 0)
+Route.stations << Route.last
+RouteStation.last.update(position: 1)
