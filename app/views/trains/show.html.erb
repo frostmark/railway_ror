@@ -1,0 +1,24 @@
+<div>
+  <strong>Number:</strong>
+  <%= @train.number %><br>
+</div>
+<div>
+  <strong>Route:</strong>
+  <%= @train.route&.name || 'Route not assigned' %>
+</div>
+
+
+<div>
+  <strong>Carriages:</strong>
+  <% if @train.carriages.empty? %>
+    None
+  <% else %>
+    <ul>
+      <% @train.carriages.each do |carriage| %>
+        <li>
+          Number: <%= carriage.number %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
