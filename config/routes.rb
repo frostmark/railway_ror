@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :trains do
+  resources :trains, only: [:show] do
     resources :tickets, shallow: true, only: [:new, :create]
   end
 
