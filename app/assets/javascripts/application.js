@@ -20,6 +20,7 @@
 
   var ready = function(){
     CarriageTypesVisibilityWidget.init();
+    EditableTitleWidget.init();
   }
 
   $(document).on('turbolinks:load', ready);

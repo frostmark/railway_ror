@@ -1,0 +1,12 @@
+<div class="editable_field_container">
+  <a class="field_edit_control" data-form-id='<%= "edit_#{item.model_name.element}_#{item.id}" %>'>
+    <i class="edit icon"></i>
+  </a>
+  <span class="editable_field" >
+    <%= item.send(field)%>
+  </span>
+  <%= form_for([:admin, item], html: { class: 'ui form editable_field_form' }) do |form| %>
+    <%= form.text_field field.to_sym %>
+    <%= form.submit 'Change field'%>
+  <% end %>
+</div>
